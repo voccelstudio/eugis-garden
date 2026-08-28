@@ -9,6 +9,7 @@ export default function App() {
   const [luz, setLuz] = useState('todos')
   const [riego, setRiego] = useState('todos')
   const [tamano, setTamano] = useState('todos')
+  const [mantenimiento, setMantenimiento] = useState('todos')
   const [busqueda, setBusqueda] = useState('')
   const [list, setList] = useState({}) // id -> cantidad
   const [listOpen, setListOpen] = useState(false)
@@ -20,10 +21,11 @@ export default function App() {
       if (luz !== 'todos' && p.luz !== luz) return false
       if (riego !== 'todos' && p.riego !== riego) return false
       if (tamano !== 'todos' && p.tamano !== tamano) return false
+      if (mantenimiento !== 'todos' && p.mantenimiento !== mantenimiento) return false
       if (q && !`${p.nombre} ${p.cientifico}`.toLowerCase().includes(q)) return false
       return true
     })
-  }, [categoria, luz, riego, tamano, busqueda])
+  }, [categoria, luz, riego, tamano, mantenimiento, busqueda])
 
   const listItems = useMemo(
     () =>
@@ -93,6 +95,8 @@ export default function App() {
           setRiego={setRiego}
           tamano={tamano}
           setTamano={setTamano}
+          mantenimiento={mantenimiento}
+          setMantenimiento={setMantenimiento}
           busqueda={busqueda}
           setBusqueda={setBusqueda}
         />

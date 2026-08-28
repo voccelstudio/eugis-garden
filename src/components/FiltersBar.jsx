@@ -1,4 +1,4 @@
-import { categories, luzOptions, riegoOptions, tamanoOptions } from '../data/plants'
+import { categories, luzOptions, riegoOptions, tamanoOptions, mantenimientoOptions } from '../data/plants'
 
 function SelectorGroup({ title, options, value, onChange }) {
   return (
@@ -32,6 +32,8 @@ export default function FiltersBar({
   setRiego,
   tamano,
   setTamano,
+  mantenimiento,
+  setMantenimiento,
   busqueda,
   setBusqueda,
 }) {
@@ -73,7 +75,8 @@ export default function FiltersBar({
       </div>
 
       {/* Filtros técnicos */}
-      <div className="grid grid-cols-1 gap-3">
+      <div className="grid grid-cols-2 gap-3">
+        <SelectorGroup title="Mantenimiento" options={mantenimientoOptions} value={mantenimiento} onChange={setMantenimiento} />
         <SelectorGroup title="Exposición" options={luzOptions} value={luz} onChange={setLuz} />
       </div>
       <div className="grid grid-cols-2 gap-3">

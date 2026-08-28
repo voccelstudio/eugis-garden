@@ -481,5 +481,12 @@ export const tamanoOptions = [
   { id: 'grande', label: 'Grande' },
 ]
 
+export const mantenimientoOptions = [
+  { id: 'todos', label: 'Cualquiera' },
+  { id: 'bajo', label: 'Bajo' },
+  { id: 'medio', label: 'Medio' },
+  { id: 'alto', label: 'Alto' },
+]
+
 export const categoriaLabel = (id) =>
   categories.find((c) => c.id === id)?.label || id
