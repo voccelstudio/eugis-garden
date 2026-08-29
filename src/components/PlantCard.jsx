@@ -92,8 +92,11 @@ export default function PlantCard({ plant, qty, onAdd, onSub }) {
 const categoriasIcon = {
   arboles: '🌳',
   arbustos: '🌿',
+  trepadoras: '🌿',
+  palmeras: '🌴',
   cubresuelos: '🍀',
   florales: '🌸',
+  frutales: '🍊',
   suculentas: '🌵',
   gramineas: '🎋',
 }
