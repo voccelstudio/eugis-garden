@@ -1,10 +1,14 @@
+function subtitulo(item) {
+  return (item && item.cientifico) || (item && item.detalle) || (item && item.unidad) || ''
+}
+
 export default function ShoppingList({ items, onAdd, onSub, onRemove, onClear, onContinue }) {
   const totalCount = items.reduce((acc, it) => acc + it.qty, 0)
 
   return (
     <div className="flex flex-col h-full bg-white dark:bg-[#1e181c]">
       <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-emerald-700 text-white">
-        <h2 className="font-bold text-lg">Plantas seleccionadas</h2>
+        <h2 className="font-bold text-lg">Selección</h2>
         {items.length > 0 && (
           <button
             onClick={onClear}
@@ -19,21 +23,23 @@ export default function ShoppingList({ items, onAdd, onSub, onRemove, onClear, o
         {items.length === 0 ? (
           <div className="text-center text-gray-400 dark:text-gray-500 py-12">
             <div className="text-4xl mb-2">🌿</div>
-            <p className="text-sm">Todavía no agregaste plantas.</p>
-            <p className="text-sm">Tocá "+ Agregar" en el catálogo.</p>
+            <p className="text-sm">Todavía no agregaste nada.</p>
+            <p className="text-sm">Tocá "+ Agregar" en las secciones.</p>
           </div>
         ) : (
           items.map((it) => (
-            <div key={it.plant.id} className="flex flex-col rounded-xl ring-1 ring-gray-200 dark:ring-gray-700 bg-white dark:bg-[#241c21] p-3 gap-2">
+            <div key={it.item.id} className="flex flex-col rounded-xl ring-1 ring-gray-200 dark:ring-gray-700 bg-white dark:bg-[#241c21] p-3 gap-2">
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
-                  <div className="font-semibold text-gray-900 dark:text-white text-[15px] truncate">{it.plant.nombre}</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400 italic truncate">{it.plant.cientifico}</div>
+                  <div className="font-semibold text-gray-900 dark:text-white text-[15px] truncate">{it.item.nombre}</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400 italic truncate">
+                    {it.item.icono} {subtitulo(it.item)}
+                  </div>
                 </div>
                 <button
-                  onClick={() => onRemove(it.plant)}
+                  onClick={() => onRemove(it.item)}
                   className="text-gray-400 dark:text-gray-500 hover:text-red-500 text-lg leading-none p-1"
-                  aria-label={`Eliminar ${it.plant.nombre}`}
+                  aria-label={`Eliminar ${it.item.nombre}`}
                 >
                   ✕
                 </button>
@@ -41,23 +47,23 @@ export default function ShoppingList({ items, onAdd, onSub, onRemove, onClear, o
               <div className="flex items-center justify-between mt-1">
                 <div className="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 rounded-full px-1 py-1">
                   <button
-                    onClick={() => onSub(it.plant)}
+                    onClick={() => onSub(it.item)}
                     className="w-9 h-9 rounded-full bg-white dark:bg-gray-700 ring-1 ring-gray-200 dark:ring-gray-600 active:scale-95 text-lg font-bold grid place-items-center text-gray-700 dark:text-gray-100"
-                    aria-label={`Quitar ${it.plant.nombre}`}
+                    aria-label={`Quitar ${it.item.nombre}`}
                   >
                     −
                   </button>
                   <span className="font-bold w-7 text-center text-gray-900 dark:text-white">{it.qty}</span>
                   <button
-                    onClick={() => onAdd(it.plant)}
+                    onClick={() => onAdd(it.item)}
                     className="w-9 h-9 rounded-full bg-emerald-600 text-white active:scale-95 text-lg font-bold grid place-items-center"
-                    aria-label={`Agregar ${it.plant.nombre}`}
+                    aria-label={`Agregar ${it.item.nombre}`}
                   >
                     +
                   </button>
                 </div>
                 <div className="text-sm font-semibold text-gray-800 dark:text-gray-200">
-                  {it.qty} {it.qty === 1 ? 'unidad' : 'unidades'}
+                  {it.qty} {it.item.unidad ? it.item.unidad : it.qty === 1 ? 'unidad' : 'unidades'}
                 </div>
               </div>
             </div>
@@ -68,7 +74,7 @@ export default function ShoppingList({ items, onAdd, onSub, onRemove, onClear, o
       <div className="border-t border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center justify-between bg-gray-50 dark:bg-[#1e181c] gap-3">
         <div className="text-gray-600 dark:text-gray-300 text-sm">
           <span className="font-semibold text-gray-900 dark:text-white">{totalCount}</span>{' '}
-          {totalCount === 1 ? 'planta' : 'plantas'} en total
+          {totalCount === 1 ? 'artículo' : 'artículos'} en total
         </div>
         <button
           onClick={onContinue}

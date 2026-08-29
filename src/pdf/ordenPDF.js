@@ -147,7 +147,7 @@ export async function generateOrdenPDF({ plantas, contacto, logo, numero, observ
   doc.setTextColor(255, 255, 255)
   doc.setFillColor(...VERDE)
   doc.rect(MARGIN, yPos, tableW, 8, 'F')
-  const headers = ['#', 'Planta', 'Cant.', 'Observaciones']
+  const headers = ['#', 'Artículo', 'Cant.', 'Observaciones']
   headers.forEach((h, i) => doc.text(h, colX[i] + 2, yPos + 5.5))
   yPos += 8
 
@@ -159,26 +159,27 @@ export async function generateOrdenPDF({ plantas, contacto, logo, numero, observ
     doc.rect(MARGIN, yPos, tableW, 8, 'F')
     doc.setTextColor(...NEGRO)
     doc.text(String(idx + 1), colX[0] + 2, yPos + 5.5)
-    doc.text(it.plant.nombre, colX[1] + 2, yPos + 5.5)
+    const nombreItem = it.item.nombre + (it.item.unidad ? ` (${it.item.unidad})` : '')
+    doc.text(nombreItem, colX[1] + 2, yPos + 5.5, { maxWidth: tableW - (colX[2] - MARGIN) - 4 })
     doc.text(String(it.qty), colX[2] + 2, yPos + 5.5)
-    const obs = (observaciones && observaciones[it.plant.id]) || ''
+    const obs = (observaciones && observaciones[it.item.id]) || ''
     doc.text(obs || '-', colX[3] + 2, yPos + 5.5, { maxWidth: tableW - (colX[3] - MARGIN) - 4 })
     yPos += 8
   })
 
-  // Total de plantas
+  // Total de artículos
   yPos = ensurePage(doc, yPos, 10)
   const totalQty = plantas.reduce((a, it) => a + it.qty, 0)
   doc.setFontSize(10)
   doc.setFont('helvetica', 'bold')
   doc.setTextColor(...VERDE)
-  doc.text(`Total: ${totalQty} ${totalQty === 1 ? 'planta' : 'plantas'}`, PAGE_W - MARGIN, yPos + 4, { align: 'right' })
+  doc.text(`Total: ${totalQty} ${totalQty === 1 ? 'artículo' : 'artículos'}`, PAGE_W - MARGIN, yPos + 4, { align: 'right' })
   yPos += 12
 
   // Registro fotográfico
   const conFoto = []
   for (const it of plantas) {
-    const fotoUrl = (fotos && fotos[it.plant.id]) || ''
+    const fotoUrl = (fotos && fotos[it.item.id]) || ''
     const dataUrl = fotoUrl ? await urlToDataUrl(fotoUrl) : null
     conFoto.push({ it, dataUrl })
   }
@@ -212,7 +213,7 @@ export async function generateOrdenPDF({ plantas, contacto, logo, numero, observ
       }
       doc.setFontSize(7.5)
       doc.setTextColor(...GRIS)
-      doc.text(item.it.plant.nombre, x, yPos + photoH + 3, { maxWidth: photoW })
+      doc.text(item.it.item.nombre, x, yPos + photoH + 3, { maxWidth: photoW })
       x += photoW + gap + 5
     }
   }

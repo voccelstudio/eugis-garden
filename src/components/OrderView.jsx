@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import { generateOrdenPDF, generateNumeroOrden } from '../pdf/ordenPDF'
 
+function subtitulo(item) {
+  return (item && item.cientifico) || (item && item.detalle) || ''
+}
+
 export default function OrderView({
   items,
   fotos,
@@ -74,7 +78,7 @@ export default function OrderView({
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {items.map((it) => {
-              const id = it.plant.id
+              const id = it.item.id
               const foto = fotos[id] || ''
               const isEditing = editingId === id
               return (
@@ -82,7 +86,7 @@ export default function OrderView({
                   {/* Foto o input */}
                   <div className="relative aspect-[4/3] bg-gradient-to-br from-emerald-100 to-green-50 flex items-center justify-center">
                     {foto ? (
-                      <img src={foto} alt={it.plant.nombre} className="w-full h-full object-cover" />
+                      <img src={foto} alt={it.item.nombre} className="w-full h-full object-cover" />
                     ) : (
                       <span className="text-5xl opacity-50">🖼️</span>
                     )}
@@ -96,8 +100,10 @@ export default function OrderView({
 
                   <div className="flex flex-col gap-2 p-3 flex-1">
                     <div>
-                      <h3 className="font-bold text-gray-900 dark:text-white leading-tight">{it.plant.nombre}</h3>
-                      <p className="text-[12px] italic text-gray-500 dark:text-gray-400">{it.plant.cientifico}</p>
+                      <h3 className="font-bold text-gray-900 dark:text-white leading-tight">{it.item.nombre}</h3>
+                      <p className="text-[12px] italic text-gray-500 dark:text-gray-400">
+                        {it.item.icono} {subtitulo(it.item)} {it.item.unidad ? `· ${it.item.unidad}` : ''}
+                      </p>
                     </div>
 
                     {isEditing && (
@@ -140,23 +146,23 @@ export default function OrderView({
                     <div className="mt-auto flex items-center justify-between gap-2 pt-1">
                       <div className="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 rounded-full px-1 py-1">
                         <button
-                          onClick={() => onSub(it.plant)}
-                          aria-label={`Disminuir cantidad de ${it.plant.nombre}`}
+                          onClick={() => onSub(it.item)}
+                          aria-label={`Disminuir cantidad de ${it.item.nombre}`}
                           className="w-9 h-9 rounded-full bg-white dark:bg-gray-700 ring-1 ring-gray-200 dark:ring-gray-600 active:scale-95 text-lg font-bold grid place-items-center text-gray-700 dark:text-gray-100"
                         >
                           −
                         </button>
                         <span className="font-bold w-7 text-center text-gray-900 dark:text-white">{it.qty}</span>
                         <button
-                          onClick={() => onAdd(it.plant)}
-                          aria-label={`Aumentar cantidad de ${it.plant.nombre}`}
+                          onClick={() => onAdd(it.item)}
+                          aria-label={`Aumentar cantidad de ${it.item.nombre}`}
                           className="w-9 h-9 rounded-full bg-emerald-600 text-white active:scale-95 text-lg font-bold grid place-items-center"
                         >
                           +
                         </button>
                       </div>
                       <button
-                        onClick={() => onRemove(it.plant)}
+                        onClick={() => onRemove(it.item)}
                         className="text-red-500 font-semibold text-sm"
                       >
                         Eliminar

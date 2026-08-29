@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { plants } from './data/plants'
+import { trabajos } from './data/trabajos'
+import { accesorios } from './data/accesorios'
 import FiltersBar from './components/FiltersBar'
 import PlantCard from './components/PlantCard'
+import ItemCard from './components/ItemCard'
 import ShoppingList from './components/ShoppingList'
 import OrderView from './components/OrderView'
 import SettingsView from './components/SettingsView'
@@ -37,6 +40,7 @@ export default function App() {
   const [logo, setLogo] = useState(() => loadLogo())
   const [dark, setDark] = useState(() => loadDark())
   const [filtersHidden, setFiltersHidden] = useState(false)
+  const [tab, setTab] = useState('plantas') // plantas | trabajos | accesorios
   const lastScrollY = useRef(0)
 
   useEffect(() => {
@@ -78,12 +82,21 @@ export default function App() {
     })
   }, [categoria, luz, riego, tamano, mantenimiento, busqueda])
 
+  const catalogo = useMemo(
+    () => [
+      ...plants.map((p) => ({ ...p, tipo: 'planta' })),
+      ...trabajos.map((t) => ({ ...t, tipo: 'trabajo' })),
+      ...accesorios.map((a) => ({ ...a, tipo: 'accesorio' })),
+    ],
+    [],
+  )
+
   const listItems = useMemo(
     () =>
       Object.entries(list)
-        .map(([id, qty]) => ({ plant: plants.find((p) => p.id === id), qty }))
-        .filter((it) => it.plant && it.qty > 0),
-    [list],
+        .map(([id, qty]) => ({ item: catalogo.find((p) => p.id === id), qty }))
+        .filter((it) => it.item && it.qty > 0),
+    [list, catalogo],
   )
 
   const totalCount = listItems.reduce((acc, it) => acc + it.qty, 0)
@@ -177,50 +190,106 @@ export default function App() {
         </div>
       </header>
 
+      {/* Pestañas de sección */}
+      <div className="flex shrink-0 bg-white dark:bg-[#241c21] border-b border-gray-200 dark:border-gray-700">
+        {[
+          { id: 'plantas', label: 'Plantas', icon: '🌿' },
+          { id: 'trabajos', label: 'Trabajos', icon: '🛠️' },
+          { id: 'accesorios', label: 'Accesorios', icon: '🪨' },
+        ].map((t) => (
+          <button
+            key={t.id}
+            onClick={() => {
+              setTab(t.id)
+              setFiltersHidden(false)
+              lastScrollY.current = 0
+            }}
+            className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 text-sm font-semibold transition border-b-2 ${
+              tab === t.id
+                ? 'border-emerald-600 text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20'
+                : 'border-transparent text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'
+            }`}
+          >
+            <span>{t.icon}</span>
+            <span>{t.label}</span>
+          </button>
+        ))}
+      </div>
+
       {/* Catálogo */}
       <main onScroll={handleCatalogScroll} className="flex-1 overflow-y-auto">
-        {/* Filtros sticky: se deslizan hacia arriba al escrollear */}
-        <div
-          className={`sticky top-0 z-20 bg-white/80 dark:bg-[#1e171b]/80 backdrop-blur px-4 py-2 border-b border-gray-200 dark:border-gray-700 transition-transform duration-300 ${
-            filtersHidden ? '-translate-y-full' : 'translate-y-0'
-          }`}
-        >
-          <FiltersBar
-            categoria={categoria}
-            setCategoria={setCategoria}
-            luz={luz}
-            setLuz={setLuz}
-            riego={riego}
-            setRiego={setRiego}
-            tamano={tamano}
-            setTamano={setTamano}
-            mantenimiento={mantenimiento}
-            setMantenimiento={setMantenimiento}
-            busqueda={busqueda}
-            setBusqueda={setBusqueda}
-          />
-        </div>
+        {tab === 'plantas' && (
+          <>
+            {/* Filtros sticky: se deslizan hacia arriba al escrollear */}
+            <div
+              className={`sticky top-0 z-20 bg-white/80 dark:bg-[#1e171b]/80 backdrop-blur px-4 py-2 border-b border-gray-200 dark:border-gray-700 transition-transform duration-300 ${
+                filtersHidden ? '-translate-y-full' : 'translate-y-0'
+              }`}
+            >
+              <FiltersBar
+                categoria={categoria}
+                setCategoria={setCategoria}
+                luz={luz}
+                setLuz={setLuz}
+                riego={riego}
+                setRiego={setRiego}
+                tamano={tamano}
+                setTamano={setTamano}
+                mantenimiento={mantenimiento}
+                setMantenimiento={setMantenimiento}
+                busqueda={busqueda}
+                setBusqueda={setBusqueda}
+              />
+            </div>
 
-        <div className="px-4 py-4">
-          <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-              {filtered.length} {filtered.length === 1 ? 'planta' : 'plantas'}
+            <div className="px-4 py-4">
+              <div className="mb-3 flex items-center justify-between">
+                <h2 className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+                  {filtered.length} {filtered.length === 1 ? 'planta' : 'plantas'}
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                {filtered.map((p) => (
+                  <PlantCard key={p.id} plant={p} qty={list[p.id] || 0} onAdd={add} onSub={sub} />
+                ))}
+              </div>
+
+              {filtered.length === 0 && (
+                <div className="text-center text-gray-400 dark:text-gray-500 py-16">
+                  <div className="text-4xl mb-2">🔍</div>
+                  <p>No se encontraron plantas con esos filtros.</p>
+                </div>
+              )}
+            </div>
+          </>
+        )}
+
+        {tab === 'trabajos' && (
+          <div className="px-4 py-4">
+            <h2 className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-3">
+              Trabajos de paisajismo y preparación del terreno
             </h2>
-          </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-          {filtered.map((p) => (
-            <PlantCard key={p.id} plant={p} qty={list[p.id] || 0} onAdd={add} onSub={sub} />
-          ))}
-        </div>
-
-        {filtered.length === 0 && (
-          <div className="text-center text-gray-400 dark:text-gray-500 py-16">
-            <div className="text-4xl mb-2">🔍</div>
-            <p>No se encontraron plantas con esos filtros.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {trabajos.map((t) => (
+                <ItemCard key={t.id} item={t} qty={list[t.id] || 0} onAdd={add} onSub={sub} />
+              ))}
+            </div>
           </div>
         )}
-        </div>
+
+        {tab === 'accesorios' && (
+          <div className="px-4 py-4">
+            <h2 className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-3">
+              Accesorios de decoración y cantos rodados
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {accesorios.map((a) => (
+                <ItemCard key={a.id} item={a} qty={list[a.id] || 0} onAdd={add} onSub={sub} />
+              ))}
+            </div>
+          </div>
+        )}
       </main>
 
       {/* Panel lateral de lista */}
