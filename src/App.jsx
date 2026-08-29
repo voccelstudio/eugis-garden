@@ -94,13 +94,13 @@ export default function App() {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-[#f3f5f2] text-gray-800 select-none">
+    <div className="h-dvh flex flex-col bg-[#f3f5f2] text-gray-800 select-none">
       {/* Header */}
       <header className="flex items-center justify-between px-4 py-3 bg-white ring-1 ring-gray-200">
         <div className="flex items-center gap-2">
-          <span className="text-2xl">🌿</span>
+          <span className="text-2xl">🌸</span>
           <div>
-            <h1 className="font-bold text-lg leading-none text-gray-900">Eugí's Garden</h1>
+            <h1 className="font-bold text-lg leading-none text-gray-900">El Jardín de Eugenia</h1>
             <p className="text-xs text-gray-500">Catálogo de plantas</p>
           </div>
         </div>

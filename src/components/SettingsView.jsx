@@ -27,7 +27,7 @@ export default function SettingsView({ initial, logo, onSave, onBack }) {
   const labelCls = 'text-sm font-semibold text-gray-700 mb-1 block'
 
   return (
-    <div className="h-screen flex flex-col bg-[#f3f5f2] text-gray-800 select-none">
+    <div className="h-dvh flex flex-col bg-[#f3f5f2] text-gray-800 select-none">
       <header className="flex items-center justify-between px-4 py-3 bg-emerald-700 text-white">
         <h1 className="font-bold text-lg">Configuración</h1>
         <button
@@ -79,7 +79,7 @@ export default function SettingsView({ initial, logo, onSave, onBack }) {
 
           <div>
             <label className={labelCls}>Nombre del negocio / contacto</label>
-            <input className={inputCls} value={form.nombre} onChange={set('nombre')} placeholder="Ej: Eugí's Garden - Eugenia" />
+            <input className={inputCls} value={form.nombre} onChange={set('nombre')} placeholder="Ej: El Jardín de Eugenia" />
           </div>
 
           <div>

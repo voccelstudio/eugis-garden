@@ -47,7 +47,7 @@ export default function OrderView({
   }
 
   return (
-    <div className="h-screen flex flex-col bg-[#f3f5f2] text-gray-800 select-none">
+    <div className="h-dvh flex flex-col bg-[#f3f5f2] text-gray-800 select-none">
       <header className="flex items-center justify-between px-4 py-3 bg-emerald-700 text-white">
         <button
           onClick={onBack}

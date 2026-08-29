@@ -97,7 +97,7 @@ export async function generateOrdenPDF({ plantas, contacto, logo, numero, observ
   drawHeader(doc, logo)
 
   // Encabezado - nombre y contacto
-  const name = contacto.nombre || 'Eugí\'s Garden'
+  const name = contacto.nombre || 'El Jardín de Eugenia'
   doc.setFontSize(20)
   doc.setTextColor(...NEGRO)
   doc.setFont('helvetica', 'bold')
