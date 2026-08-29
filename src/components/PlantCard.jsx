@@ -4,6 +4,7 @@ const luzLabel = { sol: '☀️ Sol directo', media: '🌤️ Media sombra', som
 const riegoLabel = { bajo: '💧 Riego bajo', medio: '💧 Riego medio', alto: '💧 Riego alto' }
 const mantLabel = { bajo: 'Mantenimiento bajo', medio: 'Mantenimiento medio', alto: 'Mantenimiento alto' }
 const petLabel = { true: '🐾 Apto mascotas', false: '🎯 No apto mascotas' }
+const kidsLabel = { true: '🧒 Apto niños', false: '🚫 No apto niños' }
 
 function Tag({ children, active = false }) {
   return (
@@ -45,6 +46,7 @@ export default function PlantCard({ plant, qty, onAdd, onSub }) {
           <Tag active>{luzLabel[plant.luz]}</Tag>
           <Tag>{riegoLabel[plant.riego]}</Tag>
           <Tag>{plant.petFriendly ? petLabel.true : petLabel.false}</Tag>
+          <Tag>{plant.kidsFriendly ? kidsLabel.true : kidsLabel.false}</Tag>
           <Tag>{mantLabel[plant.mantenimiento]}</Tag>
         </div>
 

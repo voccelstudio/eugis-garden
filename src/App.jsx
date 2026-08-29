@@ -177,35 +177,36 @@ export default function App() {
         </div>
       </header>
 
-      {/* Filtros */}
-      <div
-        className={`shrink-0 bg-white/80 dark:bg-[#1e171b]/80 backdrop-blur px-4 border-b border-gray-200 dark:border-gray-700 transition-all duration-300 overflow-hidden ${
-          filtersHidden ? 'max-h-0 py-0 opacity-0 border-transparent' : 'max-h-[500px] py-2'
-        }`}
-      >
-        <FiltersBar
-          categoria={categoria}
-          setCategoria={setCategoria}
-          luz={luz}
-          setLuz={setLuz}
-          riego={riego}
-          setRiego={setRiego}
-          tamano={tamano}
-          setTamano={setTamano}
-          mantenimiento={mantenimiento}
-          setMantenimiento={setMantenimiento}
-          busqueda={busqueda}
-          setBusqueda={setBusqueda}
-        />
-      </div>
-
       {/* Catálogo */}
-      <main onScroll={handleCatalogScroll} className="flex-1 overflow-y-auto px-4 py-4">
-        <div className="mb-3 flex items-center justify-between">
-          <h2 className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-            {filtered.length} {filtered.length === 1 ? 'planta' : 'plantas'}
-          </h2>
+      <main onScroll={handleCatalogScroll} className="flex-1 overflow-y-auto">
+        {/* Filtros sticky: se deslizan hacia arriba al escrollear */}
+        <div
+          className={`sticky top-0 z-20 bg-white/80 dark:bg-[#1e171b]/80 backdrop-blur px-4 py-2 border-b border-gray-200 dark:border-gray-700 transition-transform duration-300 ${
+            filtersHidden ? '-translate-y-full' : 'translate-y-0'
+          }`}
+        >
+          <FiltersBar
+            categoria={categoria}
+            setCategoria={setCategoria}
+            luz={luz}
+            setLuz={setLuz}
+            riego={riego}
+            setRiego={setRiego}
+            tamano={tamano}
+            setTamano={setTamano}
+            mantenimiento={mantenimiento}
+            setMantenimiento={setMantenimiento}
+            busqueda={busqueda}
+            setBusqueda={setBusqueda}
+          />
         </div>
+
+        <div className="px-4 py-4">
+          <div className="mb-3 flex items-center justify-between">
+            <h2 className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+              {filtered.length} {filtered.length === 1 ? 'planta' : 'plantas'}
+            </h2>
+          </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {filtered.map((p) => (
@@ -219,6 +220,7 @@ export default function App() {
             <p>No se encontraron plantas con esos filtros.</p>
           </div>
         )}
+        </div>
       </main>
 
       {/* Panel lateral de lista */}
