@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { plants } from './data/plants'
 import FiltersBar from './components/FiltersBar'
 import PlantCard from './components/PlantCard'
@@ -6,6 +6,19 @@ import ShoppingList from './components/ShoppingList'
 import OrderView from './components/OrderView'
 import SettingsView from './components/SettingsView'
 import { loadContacto, loadLogo, saveContacto, saveLogo } from './store'
+
+const DARK_KEY = 'eugi_dark'
+
+function loadDark() {
+  try {
+    const stored = localStorage.getItem(DARK_KEY)
+    if (stored !== null) return stored === 'true'
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return true
+  } catch {
+    /* ignore */
+  }
+  return false
+}
 
 export default function App() {
   const [categoria, setCategoria] = useState('todos')
@@ -22,6 +35,20 @@ export default function App() {
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [contacto, setContacto] = useState(() => loadContacto())
   const [logo, setLogo] = useState(() => loadLogo())
+  const [dark, setDark] = useState(() => loadDark())
+
+  useEffect(() => {
+    const root = document.documentElement
+    if (dark) root.classList.add('dark')
+    else root.classList.remove('dark')
+    try {
+      localStorage.setItem(DARK_KEY, String(dark))
+    } catch {
+      /* ignore */
+    }
+  }, [dark])
+
+  const toggleDark = () => setDark((d) => !d)
 
   const filtered = useMemo(() => {
     const q = busqueda.trim().toLowerCase()
@@ -94,21 +121,28 @@ export default function App() {
   }
 
   return (
-    <div className="h-dvh flex flex-col bg-[#f3f5f2] text-gray-800 select-none">
+    <div className="h-dvh flex flex-col bg-[#fdeef5] dark:bg-[#171114] text-gray-800 dark:text-gray-100 select-none">
       {/* Header */}
-      <header className="flex items-center justify-between px-4 py-3 bg-white ring-1 ring-gray-200">
+      <header className="flex items-center justify-between px-4 py-3 bg-white dark:bg-[#241c21] ring-1 ring-gray-200 dark:ring-gray-700">
         <div className="flex items-center gap-2">
           <span className="text-2xl">🌸</span>
           <div>
-            <h1 className="font-bold text-lg leading-none text-gray-900">El Jardín de Eugenia</h1>
-            <p className="text-xs text-gray-500">Catálogo de plantas</p>
+            <h1 className="font-bold text-lg leading-none text-gray-900 dark:text-white">El Jardín de Eugenia</h1>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Catálogo de plantas</p>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
           <button
+            onClick={toggleDark}
+            className="grid place-items-center w-11 h-11 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 active:scale-95 text-xl transition"
+            aria-label="Cambiar modo claro/oscuro"
+          >
+            {dark ? '☀️' : '🌙'}
+          </button>
+          <button
             onClick={() => setSettingsOpen(true)}
-            className="grid place-items-center w-11 h-11 rounded-full bg-gray-100 hover:bg-gray-200 active:scale-95 text-xl transition"
+            className="grid place-items-center w-11 h-11 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 active:scale-95 text-xl transition"
             aria-label="Configuración"
           >
             ⚙️
@@ -129,7 +163,7 @@ export default function App() {
       </header>
 
       {/* Filtros */}
-      <div className="shrink-0 bg-white/80 backdrop-blur px-4 py-2 border-b border-gray-200">
+      <div className="shrink-0 bg-white/80 dark:bg-[#1e171b]/80 backdrop-blur px-4 py-2 border-b border-gray-200 dark:border-gray-700">
         <FiltersBar
           categoria={categoria}
           setCategoria={setCategoria}
@@ -149,7 +183,7 @@ export default function App() {
       {/* Catálogo */}
       <main className="flex-1 overflow-y-auto px-4 py-4">
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="text-sm text-gray-500 font-medium">
+          <h2 className="text-sm text-gray-500 dark:text-gray-400 font-medium">
             {filtered.length} {filtered.length === 1 ? 'planta' : 'plantas'}
           </h2>
         </div>
@@ -161,7 +195,7 @@ export default function App() {
         </div>
 
         {filtered.length === 0 && (
-          <div className="text-center text-gray-400 py-16">
+          <div className="text-center text-gray-400 dark:text-gray-500 py-16">
             <div className="text-4xl mb-2">🔍</div>
             <p>No se encontraron plantas con esos filtros.</p>
           </div>

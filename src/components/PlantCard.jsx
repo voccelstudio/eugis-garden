@@ -9,7 +9,7 @@ function Tag({ children, active = false }) {
   return (
     <span
       className={`rounded-full px-2.5 py-1 text-[13px] font-medium whitespace-nowrap ${
-        active ? 'bg-emerald-100 text-emerald-800' : 'bg-gray-100 text-gray-600'
+        active ? 'bg-emerald-100 text-emerald-800' : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300'
       }`}
     >
       {children}
@@ -19,7 +19,7 @@ function Tag({ children, active = false }) {
 
 export default function PlantCard({ plant, qty, onAdd, onSub }) {
   return (
-    <div className="flex flex-col rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 overflow-hidden">
+    <div className="flex flex-col rounded-2xl bg-white dark:bg-[#241c21] shadow-sm ring-1 ring-gray-200 dark:ring-gray-700 overflow-hidden">
       {/* Foto / placeholder */}
       <div className="relative aspect-[4/3] bg-gradient-to-br from-emerald-100 to-green-50 flex items-center justify-center">
         {plant.imagen ? (
@@ -35,11 +35,11 @@ export default function PlantCard({ plant, qty, onAdd, onSub }) {
       {/* Contenido */}
       <div className="flex flex-col gap-2 p-3 flex-1">
         <div>
-          <h3 className="text-[17px] font-bold leading-tight text-gray-900">{plant.nombre}</h3>
-          <p className="text-[12px] italic text-gray-500">{plant.cientifico}</p>
+          <h3 className="text-[17px] font-bold leading-tight text-gray-900 dark:text-white">{plant.nombre}</h3>
+          <p className="text-[12px] italic text-gray-500 dark:text-gray-400">{plant.cientifico}</p>
         </div>
 
-        <p className="text-[13px] leading-snug text-gray-600 line-clamp-2">{plant.descripcion}</p>
+        <p className="text-[13px] leading-snug text-gray-600 dark:text-gray-300 line-clamp-2">{plant.descripcion}</p>
 
         <div className="flex flex-wrap gap-1.5 mt-0.5">
           <Tag active>{luzLabel[plant.luz]}</Tag>
@@ -58,8 +58,7 @@ export default function PlantCard({ plant, qty, onAdd, onSub }) {
                 aria-label={`Quitar ${plant.nombre}`}
               >
                 −
-              </button>
-              <span className="font-bold text-lg min-w-[2ch] text-center">{qty}</span>
+              </button>              <span className="font-bold text-lg min-w-[2ch] text-center">{qty}</span>
               <button
                 onClick={() => onAdd(plant)}
                 className="w-10 h-10 rounded-full bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-xl font-bold grid place-items-center transition"

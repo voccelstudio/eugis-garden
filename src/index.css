@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 html,
 body,
 #root {
@@ -8,11 +10,16 @@ body,
 }
 
 body {
-  background: #f3f5f2;
+  background: #fdeef5;
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior: none;
   user-select: none;
   -webkit-user-select: none;
+}
+
+html.dark body,
+.dark body {
+  background: #171114;
 }
 
 input,
