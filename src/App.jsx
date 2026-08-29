@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { plants } from './data/plants'
 import FiltersBar from './components/FiltersBar'
 import PlantCard from './components/PlantCard'
@@ -36,6 +36,21 @@ export default function App() {
   const [contacto, setContacto] = useState(() => loadContacto())
   const [logo, setLogo] = useState(() => loadLogo())
   const [dark, setDark] = useState(() => loadDark())
+  const [filtersHidden, setFiltersHidden] = useState(false)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    lastScrollY.current = 0
+  }, [categoria, luz, riego, tamano, mantenimiento, busqueda])
+
+  const handleCatalogScroll = (e) => {
+    const y = e.currentTarget.scrollTop
+    const dy = y - lastScrollY.current
+    lastScrollY.current = y
+    if (Math.abs(dy) < 6) return
+    if (dy > 0 && y > 40) setFiltersHidden(true)
+    else if (dy < 0) setFiltersHidden(false)
+  }
 
   useEffect(() => {
     const root = document.documentElement
@@ -163,7 +178,11 @@ export default function App() {
       </header>
 
       {/* Filtros */}
-      <div className="shrink-0 bg-white/80 dark:bg-[#1e171b]/80 backdrop-blur px-4 py-2 border-b border-gray-200 dark:border-gray-700">
+      <div
+        className={`shrink-0 bg-white/80 dark:bg-[#1e171b]/80 backdrop-blur px-4 border-b border-gray-200 dark:border-gray-700 transition-all duration-300 overflow-hidden ${
+          filtersHidden ? 'max-h-0 py-0 opacity-0 border-transparent' : 'max-h-[500px] py-2'
+        }`}
+      >
         <FiltersBar
           categoria={categoria}
           setCategoria={setCategoria}
@@ -181,7 +200,7 @@ export default function App() {
       </div>
 
       {/* Catálogo */}
-      <main className="flex-1 overflow-y-auto px-4 py-4">
+      <main onScroll={handleCatalogScroll} className="flex-1 overflow-y-auto px-4 py-4">
         <div className="mb-3 flex items-center justify-between">
           <h2 className="text-sm text-gray-500 dark:text-gray-400 font-medium">
             {filtered.length} {filtered.length === 1 ? 'planta' : 'plantas'}
