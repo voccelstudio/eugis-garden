@@ -7,7 +7,7 @@ export const accesorios = [
     nombre: 'Canto rodado blanco',
     detalle: 'Ø 20–40 mm',
     unidad: 'm²',
-    icono: '⚪',
+    icono: '🪨',
     descripcion: 'Canto rodado blanco, tamaño medio. Ideal para cubrir canteros.',
   },
   {
@@ -15,7 +15,7 @@ export const accesorios = [
     nombre: 'Canto rodado blanco',
     detalle: 'Ø 40–60 mm',
     unidad: 'm²',
-    icono: '⚪',
+    icono: '🪨',
     descripcion: 'Canto rodado blanco, tamaño grande. Para caminos y zonas secas.',
   },
   {
@@ -23,7 +23,7 @@ export const accesorios = [
     nombre: 'Canto rodado gris',
     detalle: 'Ø 20–40 mm',
     unidad: 'm²',
-    icono: '🔘',
+    icono: '🪨',
     descripcion: 'Canto rodado gris, tamaño medio.',
   },
   {
@@ -31,7 +31,7 @@ export const accesorios = [
     nombre: 'Canto rodado negro',
     detalle: 'Ø 30–50 mm',
     unidad: 'm²',
-    icono: '⚫',
+    icono: '🪨',
     descripcion: 'Canto rodado negro, tamaño medio. Efecto contrastante.',
   },
   {
@@ -39,7 +39,7 @@ export const accesorios = [
     nombre: 'Canto rodado ocre / leonado',
     detalle: 'Ø 20–40 mm',
     unidad: 'm²',
-    icono: '🟤',
+    icono: '🪨',
     descripcion: 'Canto rodado color arena/ocre, tamaño medio.',
   },
   {
