@@ -48,15 +48,8 @@ export default function PlantCard({ plant, qty, onAdd, onSub }) {
           <Tag>{mantLabel[plant.mantenimiento]}</Tag>
         </div>
 
-        {/* Costo + stepper */}
-        <div className="mt-auto pt-2 flex items-center justify-between gap-2">
-          <div className="text-sm">
-            <span className="text-gray-400 text-xs">Precio</span>
-            <div className="font-bold text-gray-900">
-              {plant.precio.toLocaleString('es-PY')} <span className="text-xs font-medium text-gray-500">Gs</span>
-            </div>
-          </div>
-
+        {/* Stepper */}
+        <div className="mt-auto pt-2 flex items-center justify-end gap-2">
           {qty > 0 ? (
             <div className="flex items-center gap-3 bg-emerald-600 text-white rounded-full px-1 py-1">
               <button

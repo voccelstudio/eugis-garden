@@ -3,6 +3,7 @@ import { plants } from './data/plants'
 import FiltersBar from './components/FiltersBar'
 import PlantCard from './components/PlantCard'
 import ShoppingList from './components/ShoppingList'
+import OrderView from './components/OrderView'
 
 export default function App() {
   const [categoria, setCategoria] = useState('todos')
@@ -12,7 +13,9 @@ export default function App() {
   const [mantenimiento, setMantenimiento] = useState('todos')
   const [busqueda, setBusqueda] = useState('')
   const [list, setList] = useState({}) // id -> cantidad
+  const [fotos, setFotos] = useState({}) // id -> url de imagen
   const [listOpen, setListOpen] = useState(false)
+  const [orderOpen, setOrderOpen] = useState(false)
 
   const filtered = useMemo(() => {
     const q = busqueda.trim().toLowerCase()
@@ -53,9 +56,18 @@ export default function App() {
       delete next[plant.id]
       return next
     })
+    setFotos((f) => {
+      const next = { ...f }
+      delete next[plant.id]
+      return next
+    })
+  }
+  const setFoto = (id, url) => {
+    setFotos((f) => ({ ...f, [id]: url }))
   }
   const clear = () => {
     setList({})
+    setFotos({})
   }
 
   return (
@@ -74,8 +86,8 @@ export default function App() {
           onClick={() => setListOpen(true)}
           className="relative flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-semibold px-4 py-2.5 rounded-full transition"
         >
-          <span>🛒</span>
-          <span className="hidden sm:inline">Lista</span>
+          <span>📋</span>
+          <span className="hidden sm:inline">Selección</span>
           {totalCount > 0 && (
             <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-xs font-bold w-6 h-6 rounded-full grid place-items-center">
               {totalCount}
@@ -135,9 +147,26 @@ export default function App() {
               onSub={sub}
               onRemove={remove}
               onClear={clear}
+              onContinue={() => {
+                setListOpen(false)
+                setOrderOpen(true)
+              }}
             />
           </div>
         </div>
+      )}
+
+      {/* Sección de selección final */}
+      {orderOpen && (
+        <OrderView
+          items={listItems}
+          fotos={fotos}
+          onFoto={setFoto}
+          onAdd={add}
+          onSub={sub}
+          onRemove={remove}
+          onBack={() => setOrderOpen(false)}
+        />
       )}
     </div>
   )
