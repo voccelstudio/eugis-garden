@@ -1,8 +1,22 @@
 import { useState } from 'react'
+import { generateOrdenPDF, generateNumeroOrden } from '../pdf/ordenPDF'
 
-export default function OrderView({ items, fotos, onFoto, onAdd, onSub, onRemove, onBack }) {
+export default function OrderView({
+  items,
+  fotos,
+  observaciones,
+  onFoto,
+  onObservacion,
+  onAdd,
+  onSub,
+  onRemove,
+  onBack,
+  contacto,
+  logo,
+}) {
   const [editingId, setEditingId] = useState(null)
   const [pendingUrl, setPendingUrl] = useState('')
+  const [generando, setGenerando] = useState(false)
 
   const beginEdit = (id, current) => {
     setEditingId(id)
@@ -15,6 +29,23 @@ export default function OrderView({ items, fotos, onFoto, onAdd, onSub, onRemove
     setPendingUrl('')
   }
 
+  const handlePdf = async () => {
+    if (items.length === 0) return
+    setGenerando(true)
+    try {
+      await generateOrdenPDF({
+        plantas: items,
+        contacto,
+        logo,
+        numero: generateNumeroOrden(),
+        observaciones,
+        fotos,
+      })
+    } finally {
+      setGenerando(false)
+    }
+  }
+
   return (
     <div className="h-screen flex flex-col bg-[#f3f5f2] text-gray-800 select-none">
       <header className="flex items-center justify-between px-4 py-3 bg-emerald-700 text-white">
@@ -22,10 +53,16 @@ export default function OrderView({ items, fotos, onFoto, onAdd, onSub, onRemove
           onClick={onBack}
           className="flex items-center gap-1 font-semibold active:scale-95 transition"
         >
-          <span className="text-lg leading-none">←</span> Volver al catálogo
+          <span className="text-lg leading-none">←</span> Volver
         </button>
-        <h1 className="font-bold text-lg">Selección de plantas</h1>
-        <span className="w-10" />
+        <h1 className="font-bold text-lg">Orden de trabajo</h1>
+        <button
+          onClick={handlePdf}
+          disabled={items.length === 0 || generando}
+          className="flex items-center gap-1.5 bg-white text-emerald-700 font-bold px-3 py-2 rounded-full text-sm disabled:opacity-40 disabled:cursor-not-allowed active:scale-95 transition shadow"
+        >
+          {generando ? <span>Generando…</span> : <span>📄 PDF</span>}
+        </button>
       </header>
 
       <main className="flex-1 overflow-y-auto px-4 py-4">
@@ -49,22 +86,12 @@ export default function OrderView({ items, fotos, onFoto, onAdd, onSub, onRemove
                     ) : (
                       <span className="text-5xl opacity-50">🖼️</span>
                     )}
-                    {foto && (
-                      <button
-                        onClick={() => beginEdit(id, foto)}
-                        className="absolute top-2 right-2 bg-black/60 text-white text-xs font-semibold px-2.5 py-1 rounded-full"
-                      >
-                        Cambiar foto
-                      </button>
-                    )}
-                    {!foto && (
-                      <button
-                        onClick={() => beginEdit(id, '')}
-                        className="absolute bottom-2 right-2 bg-emerald-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full"
-                      >
-                        + Subir foto
-                      </button>
-                    )}
+                    <button
+                      onClick={() => beginEdit(id, foto)}
+                      className="absolute bottom-2 right-2 bg-emerald-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full"
+                    >
+                      {foto ? 'Cambiar foto' : '+ Subir foto'}
+                    </button>
                   </div>
 
                   <div className="flex flex-col gap-2 p-3 flex-1">
@@ -102,10 +129,19 @@ export default function OrderView({ items, fotos, onFoto, onAdd, onSub, onRemove
                       </div>
                     )}
 
+                    <textarea
+                      value={(observaciones && observaciones[id]) || ''}
+                      onChange={(e) => onObservacion(id, e.target.value)}
+                      placeholder="Observaciones (opcional)"
+                      rows={2}
+                      className="w-full border border-gray-200 rounded-lg px-2.5 py-2 text-sm outline-none focus:ring-2 focus:ring-emerald-400 resize-none"
+                    />
+
                     <div className="mt-auto flex items-center justify-between gap-2 pt-1">
                       <div className="flex items-center gap-3 bg-gray-100 rounded-full px-1 py-1">
                         <button
                           onClick={() => onSub(it.plant)}
+                          aria-label={`Disminuir cantidad de ${it.plant.nombre}`}
                           className="w-9 h-9 rounded-full bg-white ring-1 ring-gray-200 active:scale-95 text-lg font-bold grid place-items-center text-gray-700"
                         >
                           −
@@ -113,6 +149,7 @@ export default function OrderView({ items, fotos, onFoto, onAdd, onSub, onRemove
                         <span className="font-bold w-7 text-center">{it.qty}</span>
                         <button
                           onClick={() => onAdd(it.plant)}
+                          aria-label={`Aumentar cantidad de ${it.plant.nombre}`}
                           className="w-9 h-9 rounded-full bg-emerald-600 text-white active:scale-95 text-lg font-bold grid place-items-center"
                         >
                           +
@@ -120,9 +157,9 @@ export default function OrderView({ items, fotos, onFoto, onAdd, onSub, onRemove
                       </div>
                       <button
                         onClick={() => onRemove(it.plant)}
-                        className="text-gray-400 hover:text-red-500 text-sm font-medium"
+                        className="text-red-500 font-semibold text-sm"
                       >
-                        Quitar
+                        Eliminar
                       </button>
                     </div>
                   </div>
