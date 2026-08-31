@@ -29,7 +29,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 480000,
-    imagen: '',
+    imagen: 'img/lapacho.jpg',
     descripcion: 'Flor nacional del Paraguay. Floración rosada espectacular.',
   },
   {
@@ -44,7 +44,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 420000,
-    imagen: '',
+    imagen: 'img/lapacho-amarillo.jpg',
     descripcion: 'Flores amarillas en otoño-invierno. Gran aporte ornamental.',
   },
   {
@@ -59,7 +59,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 250000,
-    imagen: '',
+    imagen: 'img/ceibo.jpg',
     descripcion: 'Flor nacional de Argentina, muy común en la flora ribereña.',
   },
   {
@@ -74,7 +74,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 350000,
-    imagen: '',
+    imagen: 'img/jacaranda.jpg',
     descripcion: 'Flores violetas en primavera. Árbol ornamental muy popular.',
   },
   {
@@ -89,7 +89,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 90000,
-    imagen: '',
+    imagen: 'img/paraiso.jpg',
     descripcion: 'De rápido crecimiento, genera mucha sombra.',
   },
   {
@@ -134,7 +134,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 70000,
-    imagen: '',
+    imagen: 'img/limon.jpg',
     descripcion: 'Frutal muy usado en patios paraguayos.',
   },
   {
@@ -149,7 +149,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 300000,
-    imagen: '',
+    imagen: 'img/yvyra-pytã.jpg',
     descripcion: 'Árbol nativo de flor amarilla, ideal para parques.',
   },
   {
@@ -164,7 +164,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 100000,
-    imagen: '',
+    imagen: 'img/palo-borracho.jpg',
     descripcion: 'Tronco abultado y flores rosadas espectaculares.',
   },
   {
@@ -179,7 +179,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 90000,
-    imagen: '',
+    imagen: 'img/tipa.jpg',
     descripcion: 'Copa aparasolada, flores amarillas y gran sombra.',
   },
   {
@@ -194,7 +194,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 60000,
-    imagen: '',
+    imagen: 'img/anacahuita.jpg',
     descripcion: 'Perenne aromático de flores blancas y frutos rojos.',
   },
   {
@@ -209,7 +209,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 80000,
-    imagen: '',
+    imagen: 'img/timbo-colorado.jpg',
     descripcion: 'Gran copa frondosa con frutos en forma de oreja.',
   },
   {
@@ -239,7 +239,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 70000,
-    imagen: '',
+    imagen: 'img/guayacan.jpg',
     descripcion: 'Ícono del Chaco, corteza jaspeada y floración amarilla.',
   },
   {
@@ -254,7 +254,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 95000,
-    imagen: '',
+    imagen: 'img/urunday.jpg',
     descripcion: 'Perenne de gran porte y madera muy resistente.',
   },
   {
@@ -269,7 +269,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 65000,
-    imagen: '',
+    imagen: 'img/algarrobo.jpg',
     descripcion: 'Árbol sagrado del Chaco, frutos dulces comestibles.',
   },
   {
@@ -284,7 +284,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 70000,
-    imagen: '',
+    imagen: 'img/sauce-criollo.jpg',
     descripcion: 'Ribereño de ramas colgantes, ideal junto a cursos de agua.',
   },
   {
@@ -299,7 +299,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 85000,
-    imagen: '',
+    imagen: 'img/guatambu.jpg',
     descripcion: 'Nativo de bosques húmedos, madera blanquecina valiosa.',
   },
   {
@@ -314,7 +314,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 80000,
-    imagen: '',
+    imagen: 'img/cedro.jpg',
     descripcion: 'Tronco recto y madera rojiza aromática.',
   },
   {
@@ -329,7 +329,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 60000,
-    imagen: '',
+    imagen: 'img/flamboyan.jpg',
     descripcion: 'Floración rojo intenso en copa aparasolada.',
   },
   {
@@ -344,7 +344,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 50000,
-    imagen: '',
+    imagen: 'img/pata-de-vaca.jpg',
     descripcion: 'Hojas bilobadas y floración rosada tipo orquídea.',
   },
   {
@@ -391,7 +391,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 35000,
-    imagen: '',
+    imagen: 'img/dama-de-noche.jpg',
     descripcion: 'Floración perfumada al caer la noche.',
   },
   {
@@ -406,7 +406,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 45000,
-    imagen: '',
+    imagen: 'img/jazmin-del-paraguay.jpg',
     descripcion: 'Flores que cambian de violeta a blanco.',
   },
   {
@@ -421,7 +421,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 40000,
-    imagen: '',
+    imagen: 'img/cambio-de-color.jpg',
     descripcion: 'De colores cambiantes, floración muy decorativa.',
   },
   {
@@ -451,7 +451,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 25000,
-    imagen: '',
+    imagen: 'img/hibisco.jpg',
     descripcion: 'Flores grandes y coloridas, muy vistoso.',
   },
   {
@@ -466,7 +466,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 20000,
-    imagen: '',
+    imagen: 'img/duranta.jpg',
     descripcion: 'Resistente, se puede podar en seto.',
   },
   {
@@ -481,7 +481,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 18000,
-    imagen: '',
+    imagen: 'img/lavanda.jpg',
     descripcion: 'Aroma agradable, atrae polinizadores.',
   },
   {
@@ -496,7 +496,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 30000,
-    imagen: '',
+    imagen: 'img/flor-de-dura.jpg',
     descripcion: 'Campanita rosada de floración abundante. Precaución: es tóxica.',
   },
   {
@@ -511,7 +511,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 25000,
-    imagen: '',
+    imagen: 'img/corona-de-cristo.jpg',
     descripcion: 'Espinosa y muy rústica, brácteas rojas o rosadas.',
   },
   {
@@ -526,7 +526,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 40000,
-    imagen: '',
+    imagen: 'img/borrachera.jpg',
     descripcion: 'Flores colgantes en trompeta. Precaución: altamente tóxica.',
   },
   {
@@ -541,7 +541,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 22000,
-    imagen: '',
+    imagen: 'img/adelfa.jpg',
     descripcion: 'Floración prolongada y resistencia a la sequía. Tóxica.',
   },
   {
@@ -556,7 +556,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 28000,
-    imagen: '',
+    imagen: 'img/celestina.jpg',
     descripcion: 'Flores celestes en racimos, ideal para muros y enrejados.',
   },
   {
@@ -571,7 +571,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 45000,
-    imagen: '',
+    imagen: 'img/arbol-jupiter.jpg',
     descripcion: 'Panículas rosas, lilas o blancas y corteza jaspeada.',
   },
   {
@@ -586,7 +586,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'alto',
     precio: 40000,
-    imagen: '',
+    imagen: 'img/gardenia.jpg',
     descripcion: 'Flores blancas muy perfumadas, requiere suelo ácido.',
   },
   {
@@ -601,7 +601,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'alto',
     precio: 22000,
-    imagen: '',
+    imagen: 'img/azalea.jpg',
     descripcion: 'Floración abundante en rosa, rojo y blanco. Tóxica.',
   },
   {
@@ -616,7 +616,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'alto',
     precio: 55000,
-    imagen: '',
+    imagen: 'img/camelia.jpg',
     descripcion: 'Flores grandes tipo rosa en invierno-primavera.',
   },
   {
@@ -631,7 +631,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 15000,
-    imagen: '',
+    imagen: 'img/lantana.jpg',
     descripcion: 'Flores multicolores que atraen mariposas. Tóxica.',
   },
 
@@ -648,7 +648,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 32000,
-    imagen: '',
+    imagen: 'img/pasionaria.jpg',
     descripcion: 'Flor símbolo del Paraguay, enredadera de crecimiento rápido.',
   },
   {
@@ -663,7 +663,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 45000,
-    imagen: '',
+    imagen: 'img/santa-rita.jpg',
     descripcion: 'Brácteas fucsia, roja o blanca que florecen casi todo el año.',
   },
   {
@@ -678,7 +678,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 40000,
-    imagen: '',
+    imagen: 'img/una-de-gato.jpg',
     descripcion: 'Trepadora nativa de flores amarillas en trompeta.',
   },
   {
@@ -693,7 +693,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 35000,
-    imagen: '',
+    imagen: 'img/madreselva.jpg',
     descripcion: 'Enredadera perfumada que atrae colibríes y mariposas.',
   },
   {
@@ -708,7 +708,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 45000,
-    imagen: '',
+    imagen: 'img/estrella-jazmin.jpg',
     descripcion: 'Flores blancas muy aromáticas y follaje brillante.',
   },
   {
@@ -723,7 +723,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 15000,
-    imagen: '',
+    imagen: 'img/campanita.jpg',
     descripcion: 'Enredadera anual de campanas azul-violeta.',
   },
   {
@@ -753,7 +753,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 32000,
-    imagen: '',
+    imagen: 'img/hiedra.jpg',
     descripcion: 'Enredadera perenne ideal para cubrir muros en penumbra.',
   },
   {
@@ -768,7 +768,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 42000,
-    imagen: '',
+    imagen: 'img/trompeta.jpg',
     descripcion: 'Trepadora vigorosa de flores anaranjadas en trompeta.',
   },
 
@@ -785,7 +785,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 150000,
-    imagen: '',
+    imagen: 'img/pindo.jpg',
     descripcion: 'Palmera plumosa nativa, la más usada en el arbolado urbano.',
   },
   {
@@ -800,7 +800,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 85000,
-    imagen: '',
+    imagen: 'img/mbocaya.jpeg',
     descripcion: 'Palmera espinosa de los palmares chaqueños.',
   },
   {
@@ -815,7 +815,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 115000,
-    imagen: '',
+    imagen: 'img/yatay.jpg',
     descripcion: 'Tronco grueso y hojas azuladas que viven siglos.',
   },
   {
@@ -830,7 +830,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 150000,
-    imagen: '',
+    imagen: 'img/caranday.jpg',
     descripcion: 'Hojas en abanico, típica de los palmares del Chaco.',
   },
   {
@@ -845,7 +845,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 110000,
-    imagen: '',
+    imagen: 'img/caranda.jpg',
     descripcion: 'Palmera rústica de hojas rígidas y tronco fibroso.',
   },
   {
@@ -860,7 +860,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 250000,
-    imagen: '',
+    imagen: 'img/palmera-real.jpg',
     descripcion: 'Tronco columnar gris que da porte majestuoso a avenidas.',
   },
   {
@@ -875,7 +875,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 100000,
-    imagen: '',
+    imagen: 'img/areca.jpg',
     descripcion: 'Tallos múltiples amarillentos, excelente de interior.',
   },
   {
@@ -890,7 +890,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 200000,
-    imagen: '',
+    imagen: 'img/palmera-canaria.jpg',
     descripcion: 'Hojas arqueadas y tronco robusto, muy común en Asunción.',
   },
   {
@@ -905,7 +905,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 140000,
-    imagen: '',
+    imagen: 'img/washingtonia.jpg',
     descripcion: 'Tronco esbelto y hojas en abanico, resistente al calor.',
   },
 
@@ -922,7 +922,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 15000,
-    imagen: '',
+    imagen: 'img/grama-manila.jpg',
     descripcion: 'Césped fino, ideal para patios de uso frecuente.',
   },
   {
@@ -937,7 +937,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 12000,
-    imagen: '',
+    imagen: 'img/dichondra.jpg',
     descripcion: 'Cubresuelo verde de aspecto suave, tolera sombra.',
   },
   {
@@ -952,7 +952,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 10000,
-    imagen: '',
+    imagen: 'img/acazia-modesta.jpg',
     descripcion: 'Muy resistente a sequía, cubre taludes.',
   },
   {
@@ -967,7 +967,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 20000,
-    imagen: '',
+    imagen: 'img/helecho.jfif',
     descripcion: 'Follaje frondoso ideal para zonas de sombra fresca y húmeda.',
   },
   {
@@ -982,7 +982,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 25000,
-    imagen: '',
+    imagen: 'img/mani-forrajero.jpg',
     descripcion: 'Tapiz perenne con flor amarilla, tolera pisoteo.',
   },
   {
@@ -997,7 +997,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 18000,
-    imagen: '',
+    imagen: 'img/lantana-rastrera.jpg',
     descripcion: 'Rastrera nativa de floración lila continua.',
   },
   {
@@ -1012,7 +1012,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 15000,
-    imagen: '',
+    imagen: 'img/cordoban-morado.jpg',
     descripcion: 'Follaje púrpura-verde que cubre rápido en semisombra.',
   },
   {
@@ -1042,7 +1042,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 20000,
-    imagen: '',
+    imagen: 'img/liriope.jpg',
     descripcion: 'Matas de hojas finas para bordes y cobertura de sombra.',
   },
   {
@@ -1057,7 +1057,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 20000,
-    imagen: '',
+    imagen: 'img/grama-sombra.jpg',
     descripcion: 'Césped fino para zonas donde la grama común no crece.',
   },
 
@@ -1074,7 +1074,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'alto',
     precio: 28000,
-    imagen: '',
+    imagen: 'img/hortensia.jpg',
     descripcion: 'Cúmulos de flores rosadas, azules o blancas.',
   },
   {
@@ -1104,7 +1104,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'alto',
     precio: 22000,
-    imagen: '',
+    imagen: 'img/rosa.jpg',
     descripcion: 'Clásica de jardines, flor icónica.',
   },
   {
@@ -1134,7 +1134,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 9000,
-    imagen: '',
+    imagen: 'img/celosia.jpg',
     descripcion: 'Plumeros de colores vivos.',
   },
   {
@@ -1149,7 +1149,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 25000,
-    imagen: '',
+    imagen: 'img/vinca.jpg',
     descripcion: 'Floración continua en rosado, blanco y lila.',
   },
   {
@@ -1179,7 +1179,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 15000,
-    imagen: '',
+    imagen: 'img/salvia.jpg',
     descripcion: 'Espigas azules o rojas que atraen picaflores. Nativa.',
   },
   {
@@ -1194,7 +1194,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 30000,
-    imagen: '',
+    imagen: 'img/crisantemo.jpg',
     descripcion: 'Flores tipo "bola" muy vendidas en viveros asuncenos.',
   },
   {
@@ -1209,7 +1209,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 18000,
-    imagen: '',
+    imagen: 'img/impatiens.jpg',
     descripcion: 'Color para zonas sombreadas y húmedas del jardín.',
   },
   {
@@ -1224,7 +1224,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 18000,
-    imagen: '',
+    imagen: 'img/begonia.jpg',
     descripcion: 'Flores y follaje vistosos para bordes de semisombra.',
   },
   {
@@ -1239,7 +1239,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 12000,
-    imagen: '',
+    imagen: 'img/zinnia.jpg',
     descripcion: 'Colores vivos que atraen mariposas, resistente al calor.',
   },
   {
@@ -1254,7 +1254,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 12000,
-    imagen: '',
+    imagen: 'img/calendula.jpg',
     descripcion: 'Flores amarillo-naranja comestibles de floración larga.',
   },
   {
@@ -1269,7 +1269,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 18000,
-    imagen: '',
+    imagen: 'img/verbena.jpg',
     descripcion: 'Alfombra florida rastrera para taludes y bordes soleados.',
   },
   {
@@ -1284,7 +1284,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 18000,
-    imagen: '',
+    imagen: 'img/gazania.jpg',
     descripcion: 'Margarita de sol pleno que tolera sequía y suelos pobres.',
   },
 
@@ -1301,7 +1301,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 15000,
-    imagen: '',
+    imagen: 'img/sabila.jpg',
     descripcion: 'Planta medicinal y de bajo mantenimiento.',
   },
   {
@@ -1316,7 +1316,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 40000,
-    imagen: '',
+    imagen: 'img/cactus-cardon.jpg',
     descripcion: 'Cactus columnar grande, típico del Chaco.',
   },
   {
@@ -1331,7 +1331,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 12000,
-    imagen: '',
+    imagen: 'img/echeveria.jpg',
     descripcion: 'Rosetas compactas, ideal para macetas.',
   },
   {
@@ -1346,7 +1346,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 18000,
-    imagen: '',
+    imagen: 'img/penca.jpg',
     descripcion: 'Nopal muy resistente a la sequía.',
   },
   {
@@ -1376,7 +1376,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 18000,
-    imagen: '',
+    imagen: 'img/cactus-erizo.jpg',
     descripcion: 'Cactus globoso con grandes flores blancas o rosadas.',
   },
   {
@@ -1391,7 +1391,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 32000,
-    imagen: '',
+    imagen: 'img/cactus-navidad.jpg',
     descripcion: 'Flores rosa/fucsia en invierno, ideal para interiores.',
   },
   {
@@ -1406,7 +1406,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 60000,
-    imagen: '',
+    imagen: 'img/agave.jpg',
     descripcion: 'Agave sin espinas de hojas flexibles azuladas.',
   },
   {
@@ -1421,7 +1421,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 32000,
-    imagen: '',
+    imagen: 'img/jade.jpg',
     descripcion: 'Suculenta arborescente de hojas carnosas, símbolo de fortuna.',
   },
   {
@@ -1436,7 +1436,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 15000,
-    imagen: '',
+    imagen: 'img/dedo-de-nino.jpg',
     descripcion: 'Hojitas carnosas que se ponen rojizas con el sol.',
   },
   {
@@ -1451,7 +1451,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 20000,
-    imagen: '',
+    imagen: 'img/kalanchoe.jpg',
     descripcion: 'Suculenta florida de larga floración en muchos colores.',
   },
   {
@@ -1481,7 +1481,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 40000,
-    imagen: '',
+    imagen: 'img/sabila-barril.jpeg',
     descripcion: 'Cactus globoso de costillas marcadas, muy resistente a sequía.',
   },
 
@@ -1498,7 +1498,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 20000,
-    imagen: '',
+    imagen: 'img/pennisetum.jpg',
     descripcion: 'Plumas rosadas, aporta movimiento al jardín.',
   },
   {
@@ -1513,7 +1513,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 25000,
-    imagen: '',
+    imagen: 'img/herbacea-pampas.jpg',
     descripcion: 'Plumas blancas imponentes, ideal como punto focal.',
   },
   {
@@ -1543,7 +1543,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'alto',
     precio: 8000,
-    imagen: '',
+    imagen: 'img/kikuyo.jpg',
     descripcion: 'Césped resistente y de crecimiento rápido, ideal para patios.',
   },
   {
@@ -1558,7 +1558,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'alto',
     precio: 7500,
-    imagen: '',
+    imagen: 'img/gramilla-bermuda.jpg',
     descripcion: 'Césped de verano, muy resistente al pisoteo y al calor.',
   },
   {
@@ -1620,7 +1620,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 40000,
-    imagen: '',
+    imagen: 'img/mango.jpg',
     descripcion: 'Gran copa y sombra con fruto tropical jugoso.',
   },
   {
@@ -1635,7 +1635,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 35000,
-    imagen: '',
+    imagen: 'img/palta.jfif',
     descripcion: 'Frutal de hoja perenne con fruto cremoso.',
   },
   {
@@ -1650,7 +1650,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 25000,
-    imagen: '',
+    imagen: 'img/papaya.jpg',
     descripcion: 'Crecimiento rapidísimo, produce frutos casi todo el año.',
   },
   {
@@ -1665,7 +1665,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 30000,
-    imagen: '',
+    imagen: 'img/guayabo.jpg',
     descripcion: 'Árbol rústico de fruto aromático, tolera poda y suelos pobres.',
   },
   {
@@ -1680,7 +1680,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 25000,
-    imagen: '',
+    imagen: 'img/pitanga.jpg',
     descripcion: 'Arbolito guavira nativo de pequeños frutos acídulos.',
   },
   {
@@ -1710,7 +1710,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'medio',
     precio: 20000,
-    imagen: '',
+    imagen: 'img/yerba-mate.jpg',
     descripcion: 'Árbol nacional de hojas brillantes, prefiere media sombra.',
   },
 ]
