@@ -4,7 +4,7 @@ import { trabajos } from './data/trabajos'
 import { accesorios } from './data/accesorios'
 import FiltersBar from './components/FiltersBar'
 import PlantCard from './components/PlantCard'
-import ItemCard from './components/ItemCard'
+import ItemList from './components/ItemList'
 import ShoppingList from './components/ShoppingList'
 import OrderView from './components/OrderView'
 import SettingsView from './components/SettingsView'
@@ -281,9 +281,9 @@ export default function App() {
             <h2 className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-3">
               Trabajos de paisajismo y preparación del terreno
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="flex flex-col gap-2">
               {trabajos.map((t) => (
-                <ItemCard key={t.id} item={t} qty={list[t.id] || 0} onAdd={add} onSub={sub} onSetQty={setQty} />
+                <ItemList key={t.id} item={t} qty={list[t.id] || 0} onAdd={add} onSub={sub} onSetQty={setQty} />
               ))}
             </div>
           </div>
@@ -294,9 +294,9 @@ export default function App() {
             <h2 className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-3">
               Accesorios de decoración y cantos rodados
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="flex flex-col gap-2">
               {accesorios.map((a) => (
-                <ItemCard key={a.id} item={a} qty={list[a.id] || 0} onAdd={add} onSub={sub} onSetQty={setQty} />
+                <ItemList key={a.id} item={a} qty={list[a.id] || 0} onAdd={add} onSub={sub} onSetQty={setQty} />
               ))}
             </div>
           </div>
