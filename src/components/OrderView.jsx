@@ -1,13 +1,9 @@
 import { useState } from 'react'
 import { generateOrdenPDF, generateNumeroOrden } from '../pdf/ordenPDF'
-import { isEditable } from '../data/medidas'
+import { isEditable, fmt } from '../data/medidas'
 
 function subtitulo(item) {
   return (item && item.cientifico) || (item && item.detalle) || ''
-}
-
-function fmt(n) {
-  return Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100)
 }
 
 export default function OrderView({

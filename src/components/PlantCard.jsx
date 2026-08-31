@@ -1,5 +1,18 @@
 import { categoriaLabel } from '../data/plants'
 
+const categoriasIcon = {
+  arboles: '🌳',
+  arbustos: '🌿',
+  trepadoras: '🌿',
+  palmeras: '🌴',
+  cubresuelos: '🍀',
+  florales: '🌸',
+  frutales: '🍊',
+  suculentas: '🌵',
+  gramineas: '🎋',
+  utilidad: '🦟',
+}
+
 const luzLabel = { sol: '☀️ Sol directo', media: '🌤️ Media sombra', sombra: '🌳 Sombra' }
 const riegoLabel = { bajo: '💧 Riego bajo', medio: '💧 Riego medio', alto: '💧 Riego alto' }
 const mantLabel = { bajo: 'Mantenimiento bajo', medio: 'Mantenimiento medio', alto: 'Mantenimiento alto' }
@@ -60,7 +73,8 @@ export default function PlantCard({ plant, qty, onAdd, onSub }) {
                 aria-label={`Quitar ${plant.nombre}`}
               >
                 −
-              </button>              <span className="font-bold text-lg min-w-[2ch] text-center">{qty}</span>
+              </button>
+              <span className="font-bold text-lg min-w-[2ch] text-center">{qty}</span>
               <button
                 onClick={() => onAdd(plant)}
                 className="w-10 h-10 rounded-full bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-xl font-bold grid place-items-center transition"
@@ -81,16 +95,4 @@ export default function PlantCard({ plant, qty, onAdd, onSub }) {
       </div>
     </div>
   )
-}
-
-const categoriasIcon = {
-  arboles: '🌳',
-  arbustos: '🌿',
-  trepadoras: '🌿',
-  palmeras: '🌴',
-  cubresuelos: '🍀',
-  florales: '🌸',
-  frutales: '🍊',
-  suculentas: '🌵',
-  gramineas: '🎋',
 }

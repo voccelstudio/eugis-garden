@@ -23,8 +23,8 @@ export default function ItemList({ item, qty, onAdd, onSub, onSetQty }) {
           )}
         </div>
         <div className="text-xs text-gray-500 dark:text-gray-400">
-          {item.detalle ? `${item.detalle} · ${item.unidad}` : item.unidad}
-          {item.descripcion ? ` · ${item.descripcion}` : ''}
+          {item.detalle ? `${item.detalle} · ` : ''}
+          {item.descripcion}
         </div>
       </div>
 

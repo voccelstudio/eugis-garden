@@ -4,3 +4,9 @@
 export function isEditable(item) {
   return item != null && (item.editable === true || ['m²', 'm³', 'ml'].includes(item.unidad))
 }
+
+// Formatea cantidades evitando ruido de decimales en floats (p. ej. 0.1 + 0.2).
+export function fmt(n) {
+  if (typeof n !== 'number' || isNaN(n)) return '0'
+  return Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100)
+}

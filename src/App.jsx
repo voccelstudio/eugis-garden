@@ -8,6 +8,7 @@ import ItemList from './components/ItemList'
 import ShoppingList from './components/ShoppingList'
 import OrderView from './components/OrderView'
 import SettingsView from './components/SettingsView'
+import { fmt } from './data/medidas'
 import { loadContacto, loadLogo, saveContacto, saveLogo } from './store'
 
 const DARK_KEY = 'eugi_dark'
@@ -194,7 +195,7 @@ export default function App() {
             <span className="hidden sm:inline">Selección</span>
             {totalCount > 0 && (
               <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-xs font-bold w-6 h-6 rounded-full grid place-items-center">
-                {totalCount}
+                {fmt(totalCount)}
               </span>
             )}
           </button>

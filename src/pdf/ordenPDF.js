@@ -9,6 +9,11 @@ const VERDE = [16, 122, 87]
 const GRIS = [120, 120, 120]
 const NEGRO = [40, 40, 40]
 
+function fmt(n) {
+  if (typeof n !== 'number' || isNaN(n)) return '0'
+  return Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100)
+}
+
 function urlToDataUrl(url) {
   return new Promise((resolve) => {
     if (!url) return resolve(null)
@@ -161,7 +166,7 @@ export async function generateOrdenPDF({ plantas, contacto, logo, numero, observ
     doc.text(String(idx + 1), colX[0] + 2, yPos + 5.5)
     const nombreItem = it.item.nombre + (it.item.unidad ? ` (${it.item.unidad})` : '')
     doc.text(nombreItem, colX[1] + 2, yPos + 5.5, { maxWidth: tableW - (colX[2] - MARGIN) - 4 })
-    doc.text(String(it.qty), colX[2] + 2, yPos + 5.5)
+    doc.text(fmt(it.qty), colX[2] + 2, yPos + 5.5)
     const obs = (observaciones && observaciones[it.item.id]) || ''
     doc.text(obs || '-', colX[3] + 2, yPos + 5.5, { maxWidth: tableW - (colX[3] - MARGIN) - 4 })
     yPos += 8
@@ -173,7 +178,12 @@ export async function generateOrdenPDF({ plantas, contacto, logo, numero, observ
   doc.setFontSize(10)
   doc.setFont('helvetica', 'bold')
   doc.setTextColor(...VERDE)
-  doc.text(`Total: ${totalQty} ${totalQty === 1 ? 'artículo' : 'artículos'}`, PAGE_W - MARGIN, yPos + 4, { align: 'right' })
+  doc.text(
+    `Total: ${fmt(totalQty)} ${totalQty === 1 ? 'artículo' : 'artículos'}`,
+    PAGE_W - MARGIN,
+    yPos + 4,
+    { align: 'right' },
+  )
   yPos += 12
 
   // Registro fotográfico

@@ -1,4 +1,4 @@
-import { isEditable } from '../data/medidas'
+import { isEditable, fmt } from '../data/medidas'
 
 function subtitulo(item) {
   return (item && item.cientifico) || (item && item.detalle) || (item && item.unidad) || ''
@@ -94,7 +94,7 @@ export default function ShoppingList({ items, onAdd, onSub, onSetQty, onRemove, 
 
       <div className="border-t border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center justify-between bg-gray-50 dark:bg-[#1e181c] gap-3">
         <div className="text-gray-600 dark:text-gray-300 text-sm">
-          <span className="font-semibold text-gray-900 dark:text-white">{totalCount}</span>{' '}
+          <span className="font-semibold text-gray-900 dark:text-white">{fmt(totalCount)}</span>{' '}
           {totalCount === 1 ? 'artículo' : 'artículos'} en total
         </div>
         <button
