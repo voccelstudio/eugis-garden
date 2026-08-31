@@ -1362,7 +1362,7 @@ export const plants = [
     kidsFriendly: false,
     mantenimiento: 'bajo',
     precio: 25000,
-    imagen: '',
+    imagen: 'img/espada-san-jorge.jpg',
     descripcion: 'Semiesuculenta muy resistente, hojas verticales que purifican el aire.',
   },
   {
@@ -1728,7 +1728,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 25000,
-    imagen: '',
+    imagen: 'img/citronela.jpg',
     descripcion: 'Aroma cítrico que repele mosquitos. Muy usada en patios y terrazas.',
   },
   {
@@ -1743,7 +1743,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 8000,
-    imagen: '',
+    imagen: 'img/albahaca.jpg',
     descripcion: 'Aromática de cocina que ayuda a repeler mosquitos. Crecimiento rápido.',
   },
   {
@@ -1773,7 +1773,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 10000,
-    imagen: '',
+    imagen: 'img/romero.jpg',
     descripcion: 'Aromática resistente a la sequía, aroma que aleja insectos.',
   },
   {
@@ -1788,7 +1788,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'bajo',
     precio: 9000,
-    imagen: '',
+    imagen: 'img/tagete.jpg',
     descripcion: 'Flor vibrante cuyo aroma repele mosquitos y plagas del huerto.',
   },
   {
@@ -1820,7 +1820,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 25000,
-    imagen: '',
+    imagen: 'img/helecho-boston.png',
     descripcion: 'Follaje colgante y frondoso, clásico de interiores y sombra.',
   },
   {
@@ -1835,7 +1835,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'alto',
     precio: 22000,
-    imagen: '',
+    imagen: 'img/helecho-culantrillo.jpg',
     descripcion: 'Hojitas finas y delicadas, ideal para ambientes húmedos y sombreados.',
   },
   {
@@ -1850,7 +1850,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 45000,
-    imagen: '',
+    imagen: 'img/helecho-cuerno-alce.jfif',
     descripcion: 'Follaje que imita un cuerno de alce, se cultiva colgado o sobre troncos.',
   },
   {
@@ -1865,7 +1865,7 @@ export const plants = [
     kidsFriendly: true,
     mantenimiento: 'medio',
     precio: 28000,
-    imagen: '',
+    imagen: 'img/helecho-serrucho.jpg',
     descripcion: 'Helecho robusto y perenne con frondas dentadas, muy resistente.',
   },
 
