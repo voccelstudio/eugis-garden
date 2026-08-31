@@ -1,8 +1,10 @@
+import { isEditable } from '../data/medidas'
+
 function subtitulo(item) {
   return (item && item.cientifico) || (item && item.detalle) || (item && item.unidad) || ''
 }
 
-export default function ShoppingList({ items, onAdd, onSub, onRemove, onClear, onContinue }) {
+export default function ShoppingList({ items, onAdd, onSub, onSetQty, onRemove, onClear, onContinue }) {
   const totalCount = items.reduce((acc, it) => acc + it.qty, 0)
 
   return (
@@ -45,26 +47,45 @@ export default function ShoppingList({ items, onAdd, onSub, onRemove, onClear, o
                 </button>
               </div>
               <div className="flex items-center justify-between mt-1">
-                <div className="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 rounded-full px-1 py-1">
-                  <button
-                    onClick={() => onSub(it.item)}
-                    className="w-9 h-9 rounded-full bg-white dark:bg-gray-700 ring-1 ring-gray-200 dark:ring-gray-600 active:scale-95 text-lg font-bold grid place-items-center text-gray-700 dark:text-gray-100"
-                    aria-label={`Quitar ${it.item.nombre}`}
-                  >
-                    −
-                  </button>
-                  <span className="font-bold w-7 text-center text-gray-900 dark:text-white">{it.qty}</span>
-                  <button
-                    onClick={() => onAdd(it.item)}
-                    className="w-9 h-9 rounded-full bg-emerald-600 text-white active:scale-95 text-lg font-bold grid place-items-center"
-                    aria-label={`Agregar ${it.item.nombre}`}
-                  >
-                    +
-                  </button>
-                </div>
-                <div className="text-sm font-semibold text-gray-800 dark:text-gray-200">
-                  {it.qty} {it.item.unidad ? it.item.unidad : it.qty === 1 ? 'unidad' : 'unidades'}
-                </div>
+                {isEditable(it.item) ? (
+                  <label className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                    <span>Cant.</span>
+                    <input
+                      type="number"
+                      min="0"
+                      step="0.5"
+                      inputMode="decimal"
+                      value={it.qty > 0 ? it.qty : ''}
+                      placeholder="0"
+                      onChange={(e) => onSetQty(it.item, e.target.value)}
+                      className="w-20 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-2 py-1.5 text-sm font-semibold text-right outline-none focus:ring-2 focus:ring-emerald-400 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    />
+                    <span className="text-xs font-semibold text-gray-700 dark:text-gray-200 w-10">{it.item.unidad}</span>
+                  </label>
+                ) : (
+                  <>
+                    <div className="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 rounded-full px-1 py-1">
+                      <button
+                        onClick={() => onSub(it.item)}
+                        className="w-9 h-9 rounded-full bg-white dark:bg-gray-700 ring-1 ring-gray-200 dark:ring-gray-600 active:scale-95 text-lg font-bold grid place-items-center text-gray-700 dark:text-gray-100"
+                        aria-label={`Quitar ${it.item.nombre}`}
+                      >
+                        −
+                      </button>
+                      <span className="font-bold w-7 text-center text-gray-900 dark:text-white">{it.qty}</span>
+                      <button
+                        onClick={() => onAdd(it.item)}
+                        className="w-9 h-9 rounded-full bg-emerald-600 text-white active:scale-95 text-lg font-bold grid place-items-center"
+                        aria-label={`Agregar ${it.item.nombre}`}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                      {it.qty} {it.item.unidad ? it.item.unidad : it.qty === 1 ? 'unidad' : 'unidades'}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           ))

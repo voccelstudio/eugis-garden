@@ -1,8 +1,13 @@
 import { useState } from 'react'
 import { generateOrdenPDF, generateNumeroOrden } from '../pdf/ordenPDF'
+import { isEditable } from '../data/medidas'
 
 function subtitulo(item) {
   return (item && item.cientifico) || (item && item.detalle) || ''
+}
+
+function fmt(n) {
+  return Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100)
 }
 
 export default function OrderView({
@@ -13,6 +18,7 @@ export default function OrderView({
   onObservacion,
   onAdd,
   onSub,
+  onSetQty,
   onRemove,
   onBack,
   contacto,
@@ -144,23 +150,40 @@ export default function OrderView({
                     />
 
                     <div className="mt-auto flex items-center justify-between gap-2 pt-1">
-                      <div className="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 rounded-full px-1 py-1">
-                        <button
-                          onClick={() => onSub(it.item)}
-                          aria-label={`Disminuir cantidad de ${it.item.nombre}`}
-                          className="w-9 h-9 rounded-full bg-white dark:bg-gray-700 ring-1 ring-gray-200 dark:ring-gray-600 active:scale-95 text-lg font-bold grid place-items-center text-gray-700 dark:text-gray-100"
-                        >
-                          −
-                        </button>
-                        <span className="font-bold w-7 text-center text-gray-900 dark:text-white">{it.qty}</span>
-                        <button
-                          onClick={() => onAdd(it.item)}
-                          aria-label={`Aumentar cantidad de ${it.item.nombre}`}
-                          className="w-9 h-9 rounded-full bg-emerald-600 text-white active:scale-95 text-lg font-bold grid place-items-center"
-                        >
-                          +
-                        </button>
-                      </div>
+                      {isEditable(it.item) ? (
+                        <label className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                          <span>Cant.</span>
+                          <input
+                            type="number"
+                            min="0"
+                            step="0.5"
+                            inputMode="decimal"
+                            value={it.qty > 0 ? it.qty : ''}
+                            placeholder="0"
+                            onChange={(e) => onSetQty(it.item, e.target.value)}
+                            className="w-20 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg px-2 py-1.5 text-sm font-semibold text-right outline-none focus:ring-2 focus:ring-emerald-400 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                          />
+                          <span className="text-xs font-semibold text-gray-700 dark:text-gray-200">{it.item.unidad}</span>
+                        </label>
+                      ) : (
+                        <div className="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 rounded-full px-1 py-1">
+                          <button
+                            onClick={() => onSub(it.item)}
+                            aria-label={`Disminuir cantidad de ${it.item.nombre}`}
+                            className="w-9 h-9 rounded-full bg-white dark:bg-gray-700 ring-1 ring-gray-200 dark:ring-gray-600 active:scale-95 text-lg font-bold grid place-items-center text-gray-700 dark:text-gray-100"
+                          >
+                            −
+                          </button>
+                          <span className="font-bold w-7 text-center text-gray-900 dark:text-white">{fmt(it.qty)}</span>
+                          <button
+                            onClick={() => onAdd(it.item)}
+                            aria-label={`Aumentar cantidad de ${it.item.nombre}`}
+                            className="w-9 h-9 rounded-full bg-emerald-600 text-white active:scale-95 text-lg font-bold grid place-items-center"
+                          >
+                            +
+                          </button>
+                        </div>
+                      )}
                       <button
                         onClick={() => onRemove(it.item)}
                         className="text-red-500 font-semibold text-sm"

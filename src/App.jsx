@@ -111,6 +111,17 @@ export default function App() {
       return next
     })
   }
+  const setQty = (plant, valor) => {
+    const next = Number(valor)
+    setList((l) => {
+      if (isNaN(next) || next <= 0) {
+        const copy = { ...l }
+        delete copy[plant.id]
+        return copy
+      }
+      return { ...l, [plant.id]: next }
+    })
+  }
   const remove = (plant) => {
     setList((l) => {
       const next = { ...l }
@@ -272,7 +283,7 @@ export default function App() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {trabajos.map((t) => (
-                <ItemCard key={t.id} item={t} qty={list[t.id] || 0} onAdd={add} onSub={sub} />
+                <ItemCard key={t.id} item={t} qty={list[t.id] || 0} onAdd={add} onSub={sub} onSetQty={setQty} />
               ))}
             </div>
           </div>
@@ -285,7 +296,7 @@ export default function App() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {accesorios.map((a) => (
-                <ItemCard key={a.id} item={a} qty={list[a.id] || 0} onAdd={add} onSub={sub} />
+                <ItemCard key={a.id} item={a} qty={list[a.id] || 0} onAdd={add} onSub={sub} onSetQty={setQty} />
               ))}
             </div>
           </div>
@@ -301,6 +312,7 @@ export default function App() {
               items={listItems}
               onAdd={add}
               onSub={sub}
+              onSetQty={setQty}
               onRemove={remove}
               onClear={clear}
               onContinue={() => {
@@ -322,6 +334,7 @@ export default function App() {
           onObservacion={setObservacion}
           onAdd={add}
           onSub={sub}
+          onSetQty={setQty}
           onRemove={remove}
           onBack={() => setOrderOpen(false)}
           contacto={contacto}
